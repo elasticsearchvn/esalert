@@ -12,7 +12,7 @@ My idea is to use Powershell script to query data on Elasticsearch and act on th
 
 ### Components
 1. Windows Task Scheduler
-2. Powershell
+2. Powershell v4 or later
     * A module to handle alert methods, alert suppression, and other minor features
     * Multiple rule templates (count, average, spike, whitelist, blacklist, flatline, frequency, etc.)
 3. Sense/Developer Tool in Kibana or anything you prefer to create query.
