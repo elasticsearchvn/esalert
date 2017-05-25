@@ -34,31 +34,31 @@
 {
   "src_ip": "10.0.0.1",
   "http_status": 200,
-  "path": "/process.aspx"
+  "path": "/process.aspx",
   "type": "iis"
 },
 {
   "src_ip": "10.0.0.1",
   "http_status": 200,
-  "path": "/misc.aspx"
+  "path": "/misc.aspx",
   "type": "iis"
 },
 {
   "src_ip": "10.0.0.2",
   "http_status": 200,
-  "path": "/login.aspx"
+  "path": "/login.aspx",
   "type": "iis"
 },
 {
   "src_ip": "10.0.0.2",
   "http_status": 403,
-  "path": "/process.aspx"
+  "path": "/process.aspx",
   "type": "iis"
 }
 ,
 {
   "src_ip": "10.0.0.3",
   "http_status": 403,
-  "path": "/misc.aspx"
+  "path": "/misc.aspx",
   "type": "iis"
 }
