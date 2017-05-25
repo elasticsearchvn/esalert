@@ -1,1 +1,64 @@
+# IDS log
+{
+  "src_ip": "10.0.0.1",
+  "alert_severity": "critical",
+  "type": "ids"
+},
+{
+  "src_ip": "10.0.0.1",
+  "alert_severity": "critical",
+  "type": "ids"
+},
+{
+  "src_ip": "10.0.0.2",
+  "alert_severity": "critical",
+  "type": "ids"
+},
+{
+  "src_ip": "10.0.0.2",
+  "alert_severity": "critical",
+  "type": "ids"
+},
+{
+  "src_ip": "10.0.0.2",
+  "alert_severity": "critical",
+  "type": "ids"
+},
+{
+  "src_ip": "10.0.0.3",
+  "alert_severity": "critical",
+  "type": "ids"
+}
 
+# IIS log
+{
+  "src_ip": "10.0.0.1",
+  "http_status": 200,
+  "path": "/process.aspx"
+  "type": "iis"
+},
+{
+  "src_ip": "10.0.0.1",
+  "http_status": 200,
+  "path": "/misc.aspx"
+  "type": "iis"
+},
+{
+  "src_ip": "10.0.0.2",
+  "http_status": 200,
+  "path": "/login.aspx"
+  "type": "iis"
+},
+{
+  "src_ip": "10.0.0.2",
+  "http_status": 403,
+  "path": "/process.aspx"
+  "type": "iis"
+}
+,
+{
+  "src_ip": "10.0.0.3",
+  "http_status": 403,
+  "path": "/misc.aspx"
+  "type": "iis"
+}
