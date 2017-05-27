@@ -1,32 +1,17 @@
 # IDS log
 {
   "src_ip": "10.0.0.1",
-  "alert_severity": "critical",
-  "type": "ids"
-},
-{
-  "src_ip": "10.0.0.1",
-  "alert_severity": "critical",
+  "log_level": "critical",
   "type": "ids"
 },
 {
   "src_ip": "10.0.0.2",
-  "alert_severity": "critical",
-  "type": "ids"
-},
-{
-  "src_ip": "10.0.0.2",
-  "alert_severity": "critical",
-  "type": "ids"
-},
-{
-  "src_ip": "10.0.0.2",
-  "alert_severity": "critical",
+  "log_level": "info",
   "type": "ids"
 },
 {
   "src_ip": "10.0.0.3",
-  "alert_severity": "critical",
+  "log_level": "critical",
   "type": "ids"
 }
 
@@ -34,36 +19,71 @@
 {
   "src_ip": "10.0.0.1",
   "http_status": 200,
-  "path": "/process.aspx",
-  "type": "iis"
-},
-{
-  "src_ip": "10.0.0.1",
-  "http_status": 200,
-  "path": "/misc.aspx",
+  "path": "/admin.aspx",
   "type": "iis"
 },
 {
   "src_ip": "10.0.0.2",
   "http_status": 200,
-  "path": "/login.aspx",
-  "type": "iis"
-},
-{
-  "src_ip": "10.0.0.2",
-  "http_status": 403,
-  "path": "/process.aspx",
-  "type": "iis"
-},
-{
-  "src_ip": "10.0.0.3",
-  "http_status": 403,
-  "path": "/misc.aspx",
-  "type": "iis"
-},
-{
-  "src_ip": "10.0.0.10",
-  "http_status": 403,
-  "path": "/misc.aspx",
+  "path": "/admin.aspx",
   "type": "iis"
 }
+
+#######
+Find the IPs that have log_level:critical on IDS and path:"/admin.aspx" && http_status:200 on IIS
+
+
+# Combine IDS and IIS. This returns 10.0.0.3 which is not what I am looking for
+POST test/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "bool": {
+            "must": [
+              {
+                "match": {
+                  "log_level": "critical"
+                }
+              },
+              {
+                "match": {
+                  "type": "ids"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "match": {
+                  "path": "/admin.aspx"
+                }
+              },
+              {
+                "match": {
+                  "type": "iis"
+                }
+              },
+              {
+                "match": {
+                  "http_status": 200
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "ip": {
+      "terms": {
+        "field": "src_ip",
+        "size": 10
+      }
+    }
+  }
